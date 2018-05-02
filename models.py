@@ -20,3 +20,15 @@ class Rsvp(db.Model):
 
     def __repr__(self):
         return '<id {} name {} email {} rehearsal {} wedding {} brunch {}>'.format(self.id, self.name, self.email, self.rehearsal, self.wedding, self.brunch)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'rehearsal': self.rehearsal,
+            'wedding': self.wedding,
+            'brunch': self.brunch,
+        }

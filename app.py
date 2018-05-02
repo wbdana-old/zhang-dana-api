@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 import os
 
@@ -16,6 +17,12 @@ def hello():
 @app.route('/<name>')
 def hello_name(name):
     return "Hello {}!".format(name)
+
+@app.route('/rsvps')
+def all_rsvps():
+    query_result = Rsvp.query.all()
+    return jsonify(result=[item.serialize for item in query_result])
+
 
 if __name__ == '__main__':
     app.run()
