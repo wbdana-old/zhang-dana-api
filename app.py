@@ -11,13 +11,10 @@ db = SQLAlchemy(app)
 from models import Rsvp
 
 @app.route('/')
-def hello():
-    return "Hello World!"
+def index():
+    return jsonify(status=200)
 
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
-
+# Get all RSVPs from every guest
 @app.route('/rsvps')
 def all_rsvps():
     query_result = Rsvp.query.all()
