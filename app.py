@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
-cors = CORS(app, resources={r"/rsvp": {"origins": "http://zhang-dana.herokuapp.com"}})
+cors = CORS(app, resources={r"/rsvp": {"origins": "https://zhang-dana.herokuapp.com"}})
 db = SQLAlchemy(app)
 
 from models import Rsvp
