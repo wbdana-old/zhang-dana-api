@@ -25,9 +25,10 @@ def all_rsvps():
 
 @app.route('/rsvp', methods=['POST'])
 @cross_origin(origin='https://zhang-dana.herokuapp.com', headers=['Content-Type'])
-# @cross_origin(origin='https://localhost:3000', header=['Content-Type'])
+# @cross_origin(origin='http://localhost:3000', header=['Content-Type'])
 def add_rsvp():
     rsvp_obj = request.get_json()
+    print(request.get_json())
     user = Rsvp.query.filter_by(email=rsvp_obj['email']).first()
     print(user)
     if user == None:
@@ -73,7 +74,7 @@ def add_rsvp():
         user.wedding = rsvp_obj['wedding']
         user.brunch = rsvp_obj['brunch']
         db.session.commit()
-        return 'We\'ve updated your RSVP!', 200
+        return 'We\'ve updated your RSVP!', 204
 
 if __name__ == '__main__':
     app.run()
