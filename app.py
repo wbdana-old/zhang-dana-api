@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['CORS_HEADERS'] = 'Content-Type'
-cors = CORS(app, resources={r"/rsvp": {"origins": "http://localhost:3000/"}})
+cors = CORS(app, resources={r"/rsvp": {"origins": "http://zhang-dana.herokuapp.com"}})
 db = SQLAlchemy(app)
 
 from models import Rsvp
@@ -24,7 +24,7 @@ def all_rsvps():
 
 # Needs to be a find or create by NAME
 @app.route('/rsvp', methods=['POST'])
-@cross_origin(origin='https://zhang-dana.herokuapp.com/rsvp', headers=['Content-Type'])
+@cross_origin(origin='https://zhang-dana.herokuapp.com', headers=['Content-Type'])
 def add_rsvp():
     rsvp_obj = request.get_json()
     user = Rsvp.query.filter_by(email=rsvp_obj['name']).first()
