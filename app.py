@@ -58,7 +58,7 @@ def add_rsvp():
             db.session.commit()
             return 'We\'ve updated your RSVP!', 200
     except Error as e:
-        print e
+        print(e)
         return 'oh fuck', 500
 
 # To update:
