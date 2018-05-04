@@ -24,7 +24,7 @@ def all_rsvps():
 
 # Needs to be a find or create by NAME
 @app.route('/rsvp', methods=['POST'])
-@cross_origin(origin='https://zhang-dana.herokuapp.com', headers=['Content-Type'])
+@cross_origin(origin='https://zhang-dana.herokuapp.com/rsvp', headers=['Content-Type'])
 def add_rsvp():
     rsvp_obj = request.get_json()
     user = Rsvp.query.filter_by(email=rsvp_obj['name']).first()
