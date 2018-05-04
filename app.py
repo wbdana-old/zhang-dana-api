@@ -23,7 +23,6 @@ def all_rsvps():
     query_result = Rsvp.query.all()
     return jsonify(result=[item.serialize for item in query_result])
 
-# Needs to be a find or create by NAME
 @app.route('/rsvp', methods=['POST'])
 @cross_origin(origin='https://zhang-dana.herokuapp.com', headers=['Content-Type'])
 # @cross_origin(origin='https://localhost:3000', header=['Content-Type'])
