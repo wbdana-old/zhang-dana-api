@@ -17,6 +17,8 @@ from models import Rsvp
 def index():
     return jsonify(status=200)
 
+# TODO: Route for RSVP by email address
+
 # Get all RSVPs from every guest
 @app.route('/rsvps')
 def all_rsvps():
