@@ -21,6 +21,7 @@ def index():
 
 # Get all RSVPs from every guest
 @app.route('/rsvps')
+@cross_origin(origin='https://zhang-dana.herokuapp.com/rsvp-list', headers=['Content-Type'])
 def all_rsvps():
     query_result = Rsvp.query.all()
     return jsonify(result=[item.serialize for item in query_result])
